@@ -1,11 +1,7 @@
 import java.util.Arrays;
-
 public class Main {
-
     private static Employee[] employees = new Employee[10];
-
     private static EmployeeBook[] employeeBooks = new EmployeeBook[10];
-
     public static void main(String[] args) {
         System.out.println("Hello world!");
         Employee employee1 = new Employee("Виноградов", "Иван", "Максимович", 1, 320000);
@@ -15,9 +11,6 @@ public class Main {
         Employee employee5 = new Employee("Логинов", "Артем", "Святославович", 2, 320000);
         Employee employee6 = new Employee("Морозова", "Василиса", "Вячеславовна", 4, 550000);
         Employee employee7 =  new Employee("Романова", "Мария", "Михайловна", 3, 550000);
-        Employee employee8 = new Employee("Сорокина", "Стефания", "Станисловна", 3, 550000);
-        Employee employee9 = new Employee("Лебедева", "Алиса", "Сергеевна", 5, 550000);
-        Employee employee10 = new Employee("Герасимова", "Екатерина", "Александровна", 4, 550000);
 
         employees[0] = employee1;
         employees[1] = employee2;
@@ -26,9 +19,7 @@ public class Main {
         employees[4] = employee5;
         employees[5] = employee6;
         employees[6] = employee7;
-        employees[7] = employee8;
-        employees[8] = employee9;
-        employees[9] = employee10;
+
 
         EmployeeBook book1 = new EmployeeBook(10);
         book1.add(new Employee("Сидоров ", "Степан ", "Ярославович", 2,320000));
@@ -70,8 +61,8 @@ public class Main {
         book1.averageSalaryInDepartment(1);
         book1.indexationSalaryInDepartment(5,1);
         book1.printAllEmployeesInDepartment(1);
-        book1.employeeLessSalary(13500);
-        book1.employeeMoreSalary(13500);
+        book1.employeeLessSalary(320000);
+        book1.employeeMoreSalary(550000);
         book1.deleteEmployee(3);
         book1.changesEmployee("Агеева", "Ксения", "Павловна", 1,550000);
         book1.printOfDepartments(1);
@@ -85,13 +76,13 @@ public class Main {
     }
 
     private static void monthlyAmount() {
-        int summ = 0;
+        int sum = 0;
         for (Employee employee : employees) {
             if (employee != null) {
-                summ += employee.getSalary();
+                sum += employee.getSalary();
             }
         }
-        System.out.println("Сумма затрат на зарплату в месяц: " + summ + " рублей.");
+        System.out.println("Сумма затрат на зарплату в месяц: " + sum + " рублей.");
     }
 
     private static void employeeMinSalary() {
@@ -219,9 +210,9 @@ public class Main {
                 + salaryAverage + " рублей.");
     }
 
-    private static void indexationSalaryInDepartment(int percent, int dapartment) {
+    private static void indexationSalaryInDepartment(int percent, int department) {
         for (Employee employee : employees) {
-            if (employee != null && employee.getDepartment() == dapartment) {
+            if (employee != null && employee.getDepartment() == department) {
                 int increaseSalary = (int) (employee.getSalary() * (percent / 100f * 1) + employee.getSalary());
                 employee.setSalary(increaseSalary);
             }
